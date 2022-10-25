@@ -3,11 +3,18 @@ from flask_cors import CORS
 import json
 from waitress import serve
 from Routes.Estudiante import estudiante
+from Routes.Departamento import departamento
+from Routes.Inscripcion import inscripcion
+from Routes.Materia import materia
 
 app=Flask(__name__)
 cors = CORS(app)
 
 app.register_blueprint(estudiante)
+app.register_blueprint(departamento)
+app.register_blueprint(inscripcion)
+app.register_blueprint(materia)
+
 app.debug = True
 
 def loadFileConfig():
