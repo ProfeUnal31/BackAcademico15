@@ -7,10 +7,17 @@ class ControladorEstudiante():
     def index(self):
         return self.repositorioEstudiante.findAll()
 
-    def create(self,infoEstudiante):
+    def create(self, infoEstudiante):
+        try:
 
-        nuevoEstudiante=Estudiante(infoEstudiante)
-        return self.repositorioEstudiante.save(nuevoEstudiante)
+            if infoEstudiante["cedula"] == None:
+                pass
+            if infoEstudiante["apellido"] == None:
+                pass
+            if infoEstudiante["nombre"] == None:
+                pass
+        except:
+            return {"Mensaje": "No ingreso informacion valida para crear el Estudiante"}
     def show(self,id):
         elEstudiante=Estudiante(self.repositorioEstudiante.findById(id))
         return elEstudiante.__dict__
